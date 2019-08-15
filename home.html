@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>POLICE STATION DETAILS</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+var stateObject = {
+"KRISHNA": { "One Town Police Station": ["MACHILIPATNAM", "VIJAYAWADA" , "GUNTUR"],
+"II Town Police Station": ["Thiruv", "Palakkad"],
+"Women police ": ["North zone ", "South zone "],
+},
+"KURNOOL": {
+"Nandyal One Town": ["Nandyal PS", "Mahanandi PS"],
+"Kurnool women ps": ["Rajmahal PS", "Kurnool PS"]
+}, "WEST GODAVARI": {
+"Eluru One Town": [" Eluru", "Tammileru"],
+"Vizag One Town": ["Women North PS", "South Zone PS"]
+},
+}
+
+window.onload = function () {
+var countySel = document.getElementById("countySel"),
+stateSel = document.getElementById("stateSel"),
+districtSel = document.getElementById("districtSel");
+for (var country in stateObject) {
+countySel.options[countySel.options.length] = new Option(country, country);
+}
+countySel.onchange = function () {
+stateSel.length = 1; // remove all options bar first
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done
+for (var state in stateObject[this.value]) {
+stateSel.options[stateSel.options.length] = new Option(state, state);
+}
+}
+countySel.onchange(); // reset in case page is reloaded
+stateSel.onchange = function () {
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done
+var district = stateObject[countySel.value][this.value];
+for (var i = 0; i < district.length; i++) {
+districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+}
+}
+}
+</script>
+</head>
+<body>
+<div class="container">
+    <div class="row bg-warning text-center mt-5">
+        <div class="offset-md-3 col-md-6">
+        <form method="post">
+    <h2> ANDHRA PRADESH STATE POLICE DEPARTEMENT</h2>
+<form name="myform" id="myForm">
+Select  District: <select name="state" id="countySel" size="1">
+<option value="" selected="selected">Select District</option>
+</select>
+<br>
+<br>
+Select Town: <select name="countrya" id="stateSel" size="1">
+<option value="" selected="selected">Please select Town</option>
+</select>
+<br>
+<br>
+Select police Station: <select name="district" id="districtSel" size="1">
+<option value="" selected="selected">Please select police Station</option>
+</select><br><br>
+
+Select employee: <select name="station" id="polices" size="1">
+<option value="" selected="selected">Please select employee</option>
+</select><br><br>
+    <center>
+<input type="submit" class="btn btn-success">
+<input type="reset" class="btn btn-danger">
+        </center>
+</form>
+</form>
+
+</div>
+ </div>
+ </div>
+</body>
+</html>
+
